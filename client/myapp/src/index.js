@@ -7,8 +7,7 @@ import { Provider } from 'react-redux'
 import { userReducer } from './redux/Reducers/userReducer';
 
 var store = createStore(
-  userReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  userReducer
 );
 
 ReactDOM.render(
