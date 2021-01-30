@@ -7,7 +7,7 @@ import moment from 'moment';
 
 import useStyles from './styles';
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     return (
         <Card className={classes.card}>
@@ -17,10 +17,28 @@ const Post = ({ post }) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => {}}>
+                <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(post._id)}>
                     <MoreHorizIcon fontSize="default" />
                 </Button>
             </div>
+            <div className={classes.details}>
+                <Typography variant="body2" color="textPrimary">{post.tags.map((tag) => '#${tag} ')}</Typography>
+            </div>
+            <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
+            <CardContent>
+                <Typography variant="h5" gutterBottom>{post.message}</Typography>
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+                <Button size="small" color="primary" onClick={() => {}}>
+                    <ThumbUpAltIcon fontSize="small" />
+                    Like
+                    {post.likeCount}
+                </Button>
+                <Button size="small" color="primary" onClick={() => {}}>
+                    <DeleteIcon fontSize="small" />
+                    Delete
+                </Button>
+            </CardActions>
         </Card>
     )
 }
